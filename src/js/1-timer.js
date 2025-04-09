@@ -1,4 +1,5 @@
 
+
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
@@ -19,12 +20,23 @@ import "izitoast/dist/css/iziToast.min.css";
             minuteIncrement: 1,
             onClose(selectedDates) {
                 selectedDate = selectedDates[0];
-                if (selectedDate > new Date()) {
-                    startBtn.disabled = false;
-                } else {
-                    alert('Please choose a date in the future');
-                    startBtn.disabled = true;
-                }
+                if (selectedDate < new Date()) {
+                    iziToast.error({
+    title: 'Error',
+    message: 'Виберіть дату більшу за сьогоднішню',
+    position: 'topRight', 
+  });
+  // Вимкнути кнопку
+  startBtn.disabled = true;
+} else {
+  
+  iziToast.success({
+    title: 'Success',
+    message: 'Дата вибрана правильно',
+    position: 'topRight',
+  });
+  // Розблокувати кнопку
+  startBtn.disabled = false;}
             },
         });
 
