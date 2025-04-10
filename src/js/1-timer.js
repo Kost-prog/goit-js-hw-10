@@ -1,4 +1,5 @@
-
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
@@ -13,7 +14,7 @@ import "izitoast/dist/css/iziToast.min.css";
         let selectedDate = null;
         let timerId = null;
 
-        const fp = flatpickr(input, {
+    const fp = flatpickr(input, {
             enableTime: true,
             time_24hr: true,
             defaultDate: new Date(),
@@ -23,7 +24,7 @@ import "izitoast/dist/css/iziToast.min.css";
                 if (selectedDate < new Date()) {
                     iziToast.error({
     title: 'Error',
-    message: 'Виберіть дату більшу за сьогоднішню',
+    message: 'Please choose a date in the future',
     position: 'topRight', 
   });
   // Вимкнути кнопку
